@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Combustível</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/scriptProduto.js"></script>
+</head>
+<body>  
+    <main >        
+        <div id="card" >
+            <header>
+                <h2>Combustível Calc 1.0</h2>
+            </header> 
+            <div><button id="id-resultado"onclick="combustivel.vResultado()">Ver cálculo -></button></div>
+            <div class="lineInput">
+                <label class="label1">Km Inicial</label>
+                <input required type="number" id="kmInicio" placeholder="km inicial"
+                        onkeydown="combustivel.lkmInicialValid()">
+                <label id="lkmInicio"class="msg"></label>
+            </div>
+            <div class="lineInput">
+                <label class="label1">Km Final</label>
+                <input required type="number" id="kmFinal" placeholder="km final"
+                        onkeydown="combustivel.lKmFimValid()">                
+                <label id="lKmFim" class="msg"></label>
+            </div>
+            <div class="lineInput">
+                <label class="label1">Preço do combustivel</label>
+                <input required type="text" id="precoCombustivel" placeholder="preço atual do combustivel"
+                        onkeydown="combustivel.lPrecoValid()">
+                <label id="lPrecoComb"class="msg"></label>
+            </div>
+            <div class="lineInput">
+                <label class="label1">Dia da semana trabalhado</label>                
+                <input required type="date" id="date" onkeydown="combustivel.lDataValid()">
+                <label id="ldata"class="msg"></label>
+            </div> 
+            <div>              
+                <button  id ="btn1"onclick="combustivel.inserirDados()">Incluir</button>
+                <button  id ="btnCancel"onclick="combustivel.cancelar()">Cancelar</button>
+                <button  id ="btnCalcular"onclick="combustivel.calcularKm()">Calcular</button>
+            </div> 
+            <div class="content">
+                <table border="1" id="tb-hader">
+                    <tr>
+                        <th class="center">ID</th>
+                        <th>Km Inicial</th>
+                        <th>Km Final</th>
+                        <th>Data</th>
+                        <th class="center">Ações</th>
+                    </tr>
+                    <tbody id="tbody">
+                       <!-- Aqui será alimentado a tabela via javascript -->
+                    </tbody>                
+                </table>                       
+            </div> 
+        </div>        
+        <div id="result-container" class="hide">
+            <h3>Resultado do calculo</h3>
+            <table class="tb-res">
+                <tr>
+                  <td id="km-rodados">Km Rodados:<span></span></td>
+                  <td id="lts-consumido">Total Lt's consumidos:<span></span></td>
+                  <td id="preco-combust">Preço do combustivel $:<span></span></td>
+                  <td id="vlr-receber">Vlr a receber $:<span></span></td>    
+                </tr>                
+            </table>
+            <button id="back-btn" onclick="combustivel.btn()">Voltar</button>
+        </div>     
+    </main>    
+</body>
+</html>
