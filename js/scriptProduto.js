@@ -172,7 +172,7 @@ class Combustivel{
         }
         if(km.td_data ==''){
             // msg += 'Informe a data \n';
-            const t= document.querySelector('.#ldata').innerText="* Campo obrigatorio"
+            const t= document.querySelector('#ldata').innerText="* Campo obrigatorio"
                  
         }
         if(msg != ''){
@@ -190,7 +190,7 @@ class Combustivel{
         document.querySelector('#lkmInicio').value='';
         document.querySelector('#lKmFim').value='';
         document.querySelector('#lPrecoComb').value='';
-        document.querySelector('.#ldata').value='';
+        document.querySelector('#ldata').value='';
         
         this.editId = null;
     } 
