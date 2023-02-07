@@ -185,8 +185,7 @@ class Combustivel{
         document.getElementById('kmInicio').value ='';
         document.getElementById('kmFinal').value =''; 
         document.getElementById('date').value ='';          
-        document.getElementById('btn1').innerText='Incluir';
-        
+        document.getElementById('btn1').innerText='Incluir';        
         this.lkmInicialValid();
         this.lKmFimValid();
         this.lPrecoValid();
