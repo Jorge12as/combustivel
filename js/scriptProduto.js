@@ -187,10 +187,10 @@ class Combustivel{
         document.getElementById('date').value ='';          
         document.getElementById('btn1').innerText='Incluir';
         
-        document.querySelector('#lkmInicio').value='';
-        document.querySelector('#lKmFim').value='';
-        document.querySelector('#lPrecoComb').value='';
-        document.querySelector('#ldata').value='';
+        this.lkmInicialValid();
+        this.lKmFimValid();
+        this.lPrecoValid();
+        this.lDataValid();
         
         this.editId = null;
     } 
