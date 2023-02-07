@@ -6,7 +6,7 @@
 body{
     
     font-family: 'Courier New', Courier, monospace;      
-	background-color: #2F4F4F;	 
+    background-color: #2F4F4F;	 
     align-items: center;
     min-height: 50vh;
     color: #fff;      
@@ -36,7 +36,7 @@ main{
     min-width: 400px;
     min-height: 400px;    
     position: absolute;
-    top: 40%;
+    top: 38%;
     left: 52%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
