@@ -186,6 +186,12 @@ class Combustivel{
         document.getElementById('kmFinal').value =''; 
         document.getElementById('date').value ='';          
         document.getElementById('btn1').innerText='Incluir';
+        
+        document.querySelector('#lkmInicio').innerText=""
+        document.querySelector('#lKmFim').innerText=""
+        document.querySelector('#lPrecoComb').innerText=""
+        document.querySelector('.#ldata').innerText=""
+        
         this.editId = null;
     } 
 
