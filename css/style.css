@@ -93,7 +93,7 @@ button{
     max-width: 110px;
     max-height: 20px;
     margin-top: -12px;
-    background-color: rgb(45, 43, 40);
+    background-color: #1e9c40;
     transition: all ease 0.5s; 
 }
 #btnCalcular{
