@@ -105,13 +105,13 @@ button{
 }
 #btnCancel{
     transition: all ease 0.4s;
-    background-color: #706868;    
+    background-color: #C40233;    
 }
 button:hover{
-    background-color: rgb(94, 29, 154);
+    background-color: #FC6A03;
 }
 #btnCancel:hover{
-    background-color: #423d3d
+    background-color: #C40235
 }
 .content{
     margin-top: -0.039rem;;    
