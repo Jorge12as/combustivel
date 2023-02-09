@@ -25,8 +25,8 @@ class Combustivel{ //Classe principal Combustivel
             this.cont='calc';
         }else{
             Swal.fire({ //Método resposavel pro exibir um modal personalizado..
-                icon:'warning',position: 'top-end',
-                titleText: "Informe os dodas, para realizar o cálculo"        
+                position: 'top-end',
+                titleText: "Informe os dodas, para realizar o cálculo",                       
             });
         }
     }
@@ -43,7 +43,8 @@ class Combustivel{ //Classe principal Combustivel
                 this.cont='atualizar';
                 this.atualizar(this.editId,km);
                 this.adicionarNaTabela();
-                this.calculaCombustivel();               
+                this.calculaCombustivel();    
+                this.cancelar();           
             }
         }                
     } 
@@ -177,9 +178,8 @@ class Combustivel{ //Classe principal Combustivel
            document.querySelector('#lPrecoComb').innerText="* Campo obrigatorio"
         }
         if(km.td_data ==''){
-            // msg += 'Informe a data \n';
-            const t= document.querySelector('.#ldata').innerText="* Campo obrigatorio"
-                 
+            msg=false;
+            document.querySelector('#ldata').innerText="* Campo obrigatorio"             
         }
         if(!msg){           
             return false;
@@ -192,6 +192,10 @@ class Combustivel{ //Classe principal Combustivel
         document.getElementById('kmFinal').value =''; 
         document.getElementById('date').value ='';          
         document.getElementById('btn1').innerText='Incluir';
+        this.lkmInicialValid();
+        this.lKmFimValid();
+        this.lPrecoValid();
+        this.lDataValid();
         this.editId = null;
     } 
 
@@ -202,8 +206,7 @@ class Combustivel{ //Classe principal Combustivel
             for(let i = 0; i < this.arrayCombustivel.length; i++){
                 if(this.arrayCombustivel[i].id == id){
                     this.arrayCombustivel.splice(i, 1);
-                    tbody.deleteRow(i);   
-                
+                    tbody.deleteRow(i);                   
                 }
             }
             this.calculaCombustivel();

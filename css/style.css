@@ -78,7 +78,7 @@ button{
     border: 0px;
     padding: 8px;
     outline: 0;
-    background-color: #FF6600;
+    background-color: #df5e08;
     color: #fff;
     border-radius: 4px;
     font-weight: bold;
@@ -108,10 +108,10 @@ button{
     background-color: #C40233;    
 }
 button:hover{
-    background-color: rgb(94, 29, 154);
+    background-color: #ff6600;
 }
 #btnCancel:hover{
-    background-color: #423d3d
+    background-color: #ef0b0b
 }
 .content{
     margin-top: -0.039rem;;    
