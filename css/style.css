@@ -78,7 +78,7 @@ button{
     border: 0px;
     padding: 8px;
     outline: 0;
-    background-color: #FFA500;
+    background-color: #FF6600;
     color: #fff;
     border-radius: 4px;
     font-weight: bold;
@@ -98,7 +98,7 @@ button{
 }
 #btnCalcular{
     margin-left: 2rem;    
-    background-color: rgb(45, 43, 40);
+    background-color: #1e9c40; 
 }
 #id-resultado:hover,#btnCalcular:hover{
     background-color: #1e9c40;     
