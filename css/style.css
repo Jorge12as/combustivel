@@ -18,12 +18,12 @@ body{
 }
 /* Stilização do Cabeçalho */
 header{
-    font-size:1.3rem;     
+    font-size:1.1rem;     
     color: #fff;    
     margin-top: -50px; 
     position:absolute;
-	text-align: center; 
-    margin-left:0rem;
+	text-align: center;     
+    margin-left:1rem; 
 }
 /* Stilização da tabla e cabelhaço */
 .content thead{
@@ -101,17 +101,17 @@ button{
     background-color: #1e9c40; 
 }
 #id-resultado:hover,#btnCalcular:hover{
-    background-color: #1e9c40;     
+    background-color: #004412;     
 }
 #btnCancel{
     transition: all ease 0.4s;
     background-color: #C40233;    
 }
 button:hover{
-    background-color: #FC6A03;
+    background-color: rgb(94, 29, 154);
 }
 #btnCancel:hover{
-    background-color: #C40235
+    background-color: #423d3d
 }
 .content{
     margin-top: -0.039rem;;    
@@ -173,6 +173,10 @@ button:hover{
     width: 150px;
     height: 40px;  
     margin-top: 45px; 
+    background-color: #0d29b6;
+}
+#back-btn:hover{
+    background-color: #1d06f2fa;
 }
 span{
     color:yellow;
@@ -183,6 +187,8 @@ span{
 #result-container h3{
     text-align: center;
     margin-top: -3rem; 
+    font-size: 27px;
+    
 }
 #km-rodados,#lts-consumido,#preco-combust,#vlr-receber{
     color: #ccc;
@@ -197,5 +203,3 @@ span{
 input:valid{
     border-color: #090;
 }
-
- 

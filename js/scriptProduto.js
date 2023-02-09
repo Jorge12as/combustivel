@@ -1,34 +1,39 @@
-class Combustivel{
+class Combustivel{ //Classe principal Combustivel
     
-    constructor (){
+    constructor (){ //Construtor da classe 
         this.id = 1;
         this.arrayCombustivel = [];
         this.editId = null;
         this.td_precoCombustivel;
         this.vlrApagar=0;
-        this.cont ='calc';
+        this.cont ='calc';          
     }   
     
-    vResultado(){
+    vResultado(){ //botão para ir para a tela de resultado
         this.transicaoTelas();
     }
-    btn() {    
+
+    btn() { // botao p/ sair da tela de resultado 
         this.cancelar();
         this.transicaoTelas();
     }     
 
-    calcularKm(){
+    calcularKm(){ //Metodo para calcular os km 
         if(this.cont != 'calc'){
             this.calculaCombustivel();
             this.transicaoTelas();
             this.cont='calc';
-        } else{           
-        alert('Insira os dados novamente para um novo calculo.');}
+        }else{
+            Swal.fire({ //Método resposavel pro exibir um modal personalizado..
+                icon:'warning',position: 'top-end',
+                titleText: "Informe os dodas, para realizar o cálculo"        
+            });
+        }
     }
 
-    inserirDados(){
+    inserirDados(){ //Metodo para incluir os registro na tabela
         let km = this.lerDados();
-
+        
         if(this.validaCampos(km)){
             if(this.editId == null){
                 this.adicionar(km);
@@ -43,7 +48,7 @@ class Combustivel{
         }                
     } 
   
-    adicionarNaTabela(){
+    adicionarNaTabela(){ //Incluir os registro na tabela
         let tbody = document.getElementById('tbody');
         tbody.innerText = '';
         
@@ -59,7 +64,7 @@ class Combustivel{
             td_id.innerText = this.arrayCombustivel[i].id
             td_kmInicial.innerText = this.arrayCombustivel[i].td_kmInicial
             td_kmFinal.innerText = this.arrayCombustivel[i].td_kmFinal
-            td_data.innerText = this.arrayCombustivel[i].data          
+            td_data.innerText = this.arrayCombustivel[i].td_data          
                         
             td_id.classList.add('center');
 
@@ -77,43 +82,43 @@ class Combustivel{
             td_acoes.appendChild(imgEdit);
             td_acoes.appendChild(imgDelete);
 
-            // console.log(this.arrayCombustivel);
-
         }
     }
-    transicaoTelas() {
+    transicaoTelas() { //realiza a transição das telas
         const resultContainer= document.querySelector("#result-container");
         const card= document.querySelector("#card");
         resultContainer.classList.toggle("hide");
         card.classList.toggle("hide");
     } 
-    adicionar(km){
+
+    adicionar(km){ //Adiciona um registro no array
         this.arrayCombustivel.push(km);
         this.id++; 
         this.cont='novo';           
     }
 
-    
     calculaCombustivel(){//Realiza o calculo do km dos dados da tabela
         let km = []
         let totalKmRodados =0;       
         const kmPorLitro = 30;      
-        
+        //Seleciona os elementos span que ira receber o resultado do calculo
         const kmRodados = document.querySelector("#km-rodados span");
         const ltsConsumido = document.querySelector("#lts-consumido span");
         const precoCombust = document.querySelector("#preco-combust span");
         const vlrReceber = document.querySelector("#vlr-receber span");        
-
+        //Limpa os elementos para receberem os resultados do calculo
         km.t_ltsConsumido = "";          
         kmRodados.innerText ="";
         ltsConsumido.innerText = "";
         precoCombust.innerText = "";
         vlrReceber.innerText = ""; 
         this.vlrApagar=0;
+        
         for(let i = 0; i < this.arrayCombustivel.length; i++){
-            km.push(totalKmRodados += 
+            km.push(totalKmRodados +=  //Realiza o calculo do Km rodado
             this.arrayCombustivel[i].td_kmFinal - this.arrayCombustivel[i].td_kmInicial);
         }
+        //Realiza os demais calculos e alimenta os elementos span com o resultado..
         km.t_ltsConsumido = totalKmRodados / kmPorLitro;
         this.vlrApagar += km.t_ltsConsumido * this.td_precoCombustivel;  
         kmRodados.innerText = totalKmRodados;
@@ -122,79 +127,75 @@ class Combustivel{
         vlrReceber.innerText = this.vlrApagar.toFixed(2);      
     }
         
-    atualizar(id, km){                
+    atualizar(id, km){ //Atualiza o registro no array, com base no seu id          
         for(let i = 0; i < this.arrayCombustivel.length; i++){
             if(this.arrayCombustivel[i].id == id){
                 this.arrayCombustivel[i].td_kmInicial = km.td_kmInicial;
                 this.arrayCombustivel[i].td_kmFinal = km.td_kmFinal;
-                this.arrayCombustivel[i].data = km.data;
+                this.arrayCombustivel[i].td_data = km.td_data;
             }            
         }
         document.getElementById('btn1').style='color:white'
     }
 
-    lerDados(){
-        let km = {}
+    lerDados(){ //Ler os dados vindo da tela
+        let km = {}        
         km.id = this.id;
         km.td_kmInicial = document.getElementById('kmInicio').value;
         km.td_kmFinal = document.getElementById('kmFinal').value;
         this.td_precoCombustivel = parseFloat(document.getElementById('precoCombustivel').value);
-        km.data = document.getElementById('date').value;     
+        km.td_data =document.getElementById('date').value;     
         return km;
     }
 
-    lkmInicialValid(){
+    lkmInicialValid(){ //Limpa os elementos label
         document.querySelector('#lkmInicio').innerText=""
     }
     lKmFimValid(){
         document.querySelector('#lKmFim').innerText=""
     }
-    lPrecoValid(){
+    lPrecoValid(){ //Limpa os elementos label
         document.querySelector('#lPrecoComb').innerText=""
     }
     lDataValid(){
         document.querySelector('#ldata').innerText=""
     }
-    validaCampos(km){
-         let msg = '';
+  
+    validaCampos(km){ //Valida os campos de entrada
+        let msg = true;
 
         if(km.td_kmInicial ==''){
-            const t =document.querySelector('#lkmInicio').innerText="* Campo obrigatorio"
-            msg += 'Informe a quilometragem inicial \n';              
+            msg=false;
+            document.querySelector('#lkmInicio').innerText="* Campo obrigatorio"             
         }
         if(km.td_kmFinal == ''){
-            msg += 'Informe a quilometragem final \n';
-            const t = document.querySelector('#lKmFim').innerText="* Campo obrigatorio"
+            msg=false;            
+            document.querySelector('#lKmFim').innerText="* Campo obrigatorio"
         }
         if(isNaN =!this.td_precoCombustivel){
-            // msg += 'Informe o preço do combustivel \n';
-           const t= document.querySelector('#lPrecoComb').innerText="* Campo obrigatorio"
+            msg=false;
+           document.querySelector('#lPrecoComb').innerText="* Campo obrigatorio"
         }
         if(km.td_data ==''){
             // msg += 'Informe a data \n';
-            const t= document.querySelector('#ldata').innerText="* Campo obrigatorio"
+            const t= document.querySelector('.#ldata').innerText="* Campo obrigatorio"
                  
         }
-        if(msg != ''){
-            // alert(msg);
+        if(!msg){           
             return false;
         }
         return true;
     }
-    cancelar(){
+
+    cancelar(){ //cancela operação e limpa os elementos da tela
         document.getElementById('kmInicio').value ='';
         document.getElementById('kmFinal').value =''; 
         document.getElementById('date').value ='';          
-        document.getElementById('btn1').innerText='Incluir';        
-        this.lkmInicialValid();
-        this.lKmFimValid();
-        this.lPrecoValid();
-        this.lDataValid();
-        
+        document.getElementById('btn1').innerText='Incluir';
         this.editId = null;
     } 
 
-    deletar(id){
+    deletar(id){ //Remove um registro do array.
         if(confirm(`Deseja realmente deletar o km do ID ${id} ?`)){
             let tbody = document.getElementById('tbody');
 
@@ -209,17 +210,17 @@ class Combustivel{
         }   
     }
 
-    preparaEdicao(dados){
+    preparaEdicao(dados){ //Prepara os dados pra ediçao na tela
         this.editId = dados.id;
         document.getElementById('kmInicio').value = dados.td_kmInicial;
         document.getElementById('kmFinal').value = dados.td_kmFinal;
-        document.getElementById('date').value =dados.data; 
+        document.getElementById('date').value =dados.td_data; 
         document.getElementById('btn1').innerText = 'Atualizar';
         document.getElementById('btn1').style='color:#98FB98'
     }    
    
 }
 
-var combustivel = new Combustivel();
+var combustivel = new Combustivel(); //instacia um objeto do tipo Combustivel
 
 
